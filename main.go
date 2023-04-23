@@ -33,7 +33,6 @@ import (
 
 	testiov1 "k8s-test/api/v1"
 	"k8s-test/pkg/controllers"
-	"k8s-test/pkg/webhooks"
 	//+kubebuilder:scaffold:imports
 )
 
@@ -99,11 +98,11 @@ func main() {
 	}
 	//+kubebuilder:scaffold:builder
 
-	setupLog.Info("setup webhook")
-	if err := webhooks.SetupWithManager(mgr); err != nil {
-		setupLog.Error(err, "unable to setup webhook")
-		os.Exit(1)
-	}
+	// setupLog.Info("setup webhook")
+	// if err := webhooks.SetupWithManager(mgr); err != nil {
+	// 	setupLog.Error(err, "unable to setup webhook")
+	// 	os.Exit(1)
+	// }
 
 	if err := mgr.AddHealthzCheck("healthz", healthz.Ping); err != nil {
 		setupLog.Error(err, "unable to set up health check")
