@@ -1,0 +1,20 @@
+domain: elisii.com
+layout:
+- go.kubebuilder.io/v3
+projectName: k8s-test
+repo: k8s-test
+resources:
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: elisii.com
+  group: test.io
+  kind: MyCrd
+  path: k8s-test/api/v1
+  version: v1
+  webhooks:
+    defaulting: true
+    validation: true
+    webhookVersion: v1
+version: "3"
