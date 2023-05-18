@@ -49,19 +49,16 @@ type MyCrdReconciler struct {
 func (r *MyCrdReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
 	_ = log.FromContext(ctx)
 
-	myCrd := &testiov1.MyCrd{}
-	err := r.Get(context.TODO(), req.NamespacedName, myCrd)
-	if err != nil {
-		if client.IgnoreNotFound(err) == nil {
-			log.Log.Info("not found any MyCrd")
-			return ctrl.Result{}, nil
-		}
-		return ctrl.Result{}, err
-	}
+	// myCrd := &testiov1.MyCrd{}
+	// err := r.Get(ctx, req.NamespacedName, myCrd)
+	// if err != nil {
+	// 	if client.IgnoreNotFound(err) != nil {
+	// 		log.Log.Info("not found any MyCrd")
+	// 		return ctrl.Result{}, nil
+	// 	}
+	// 	return ctrl.Result{}, err
+	// }
 
-	log.Log.Info("normal", "name", myCrd.GetName())
-	log.Log.Info("normal", "namespace", myCrd.GetNamespace())
-	log.Log.Info("normal", "cidr", myCrd.Spec.Cidr)
 	return ctrl.Result{}, nil
 }
 
